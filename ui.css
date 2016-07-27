@@ -1,0 +1,469 @@
+/*todo by yjh */
+/*
+* todo 盒模型:
+* todo 盒模型：ui-flex ,  ui-box --> 要控制水平样式需要用ui-box
+* todo 垂直居中：ui-flex-align --> 推荐使用这项，水平自适应
+* todo 两端对齐：ui-flex-justify
+* todo 水平居中：ui-flex-pack
+* todo 水平两端对齐，垂直居中 ui-flex-justify-center
+* todo 水平垂直居中：ui-flex-center
+* todo 盒模型主子类：ui-flex-1
+* todo 盒模型子类左边：ui-flex-left
+* todo 盒模型子类右边(带箭头): ui-flex-right
+*
+* todo 1px 边线：
+* todo 上下双线：ui-two-line
+* todo 上线：ui-top-line
+* todo 下线：ui-bottom-line
+* todo 左线：ui-left-line
+* todo 右线：ui-right-line
+*
+* todo 栅格系统：需要为 ul->li->a 或者 ol->li->a布局
+* todo 栅格父类：col ，等分样式加在父类上
+* todo 1等分：col-1
+* todo 2等分：col-2
+* todo 3等分：col-3
+* todo 4等分：col-4
+* todo 5等分：col-5
+* todo 6等分：col-6
+* todo 7等分：col-7
+* todo 8等分：col-8
+*
+* todo 按钮 ui-btn
+* todo 按钮高亮 ui-btn.on
+* todo 头部返回按钮 ui-back
+* todo 超出省略号：line-1 , line-2 line-3
+* todo 浮动 ：左fl ，右 fr 清除 clear
+* todo margin 下20 mt20  右20 mr20
+* todo 输入框 ui_input
+* todo 字体 12 f12, 13 f13 类推
+* todo 页面居中 ui-body-center
+* todo 遮罩 ui-mask ,显示 ui-mask-show
+* todo padding pd20
+* todo 常用标签：header nav section footer article
+*/
+/*点击样式*/
+a:active{
+    opacity: 0.6;
+    background: #ddd;
+}
+/*盒模型 新*/
+.ui-flex{
+    position: relative;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    width: 100%;
+    box-sizing: border-box;
+}
+/*盒模型 旧*/
+.ui-box{
+    display: -webkit-box;
+    display: box;
+    width: 100%;
+    box-sizing: border-box;
+}
+/*垂直居中*/
+.ui-flex-align{
+    position: relative;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    width: 100%;
+    box-sizing: border-box;
+}
+/*两端对齐*/
+.ui-flex-justify{
+    position: relative;
+    width: 100%;
+    display: -webkit-box;
+    display: box;
+    -webkit-box-pack: justify;
+    box-sizing: border-box;
+}
+/*水平居中*/
+.ui-flex-pack{
+    position: relative;
+    width: 100%;
+    display: -webkit-box;
+    display: box;
+    -webkit-box-pack: center;
+    box-sizing: border-box;
+}
+/*水平垂直居中*/
+.ui-flex-center{
+    position: relative;
+    display: -webkit-box;
+    display: box;
+    -webkit-box-align: center;
+    box-align: center;
+    -webkit-box-pack: center;
+    width: 100%;
+    box-sizing: border-box;
+}
+/*垂直居中，水平两端对齐*/
+.ui-flex-justify-center{
+    position: relative;
+    display: -webkit-box;
+    display: box;
+    -webkit-box-align: center;
+    box-align: center;
+    -webkit-box-pack: justify;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.ui-flex-1{
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+}
+.ui-flex-left{
+    text-align: left;
+}
+.ui-flex-right{
+    text-align: right;
+}
+
+.ui-flex-right:after{
+    content: " ";
+    display: inline-block;
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+    height: 6px;
+    width: 6px;
+    border-width: 2px 2px 0 0;
+    border-color: #C8C8CD;
+    border-style: solid;
+    position: relative;
+    top: -1px;
+    margin-left: .3em;
+}
+/*设置边线*/
+.ui-top-line{
+    position: relative;
+}
+.ui-top-line:before {
+    content: " ";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 1px;
+    border-top: 1px solid #D9D9D9;
+    color: #D9D9D9;
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+    -webkit-transform: scaleY(0.5);
+    transform: scaleY(0.5);
+}
+
+.ui-bottom-line{
+    position: relative;
+}
+.ui-bottom-line:before {
+    content: " ";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 1px;
+    border-bottom: 1px solid #D9D9D9;
+    color: #D9D9D9;
+    -webkit-transform-origin: 0 100%;
+    transform-origin: 0 100%;
+    -webkit-transform: scaleY(0.5);
+    transform: scaleY(0.5);
+}
+.ui-left-line{
+    position: relative;
+}
+.ui-left-line:before {
+    content: " ";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 1px;
+    height: 100%;
+    border-left: 1px solid #D9D9D9;
+    color: #D9D9D9;
+    -webkit-transform-origin: 100% 0;
+    transform-origin: 100% 0;
+    -webkit-transform: scaleX(0.5);
+    transform: scaleX(0.5);
+}
+.ui-right-line{
+    position: relative;
+}
+.ui-right-line:before {
+    content: " ";
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 1px;
+    height: 100%;
+    border-right: 1px solid #D9D9D9;
+    color: #D9D9D9;
+    -webkit-transform-origin: 100% 0;
+    transform-origin: 100% 0;
+    -webkit-transform: scaleX(0.5);
+    transform: scaleX(0.5);
+}
+.ui-two-line{
+    position: relative;
+}
+.ui-two-line:before{
+    content: " ";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 1px;
+    border-top: 1px solid #D9D9D9;
+    color: #D9D9D9;
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+    -webkit-transform: scaleY(0.5);
+    transform: scaleY(0.5);
+}
+.ui-two-line:after{
+    content: " ";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 1px;
+    border-bottom: 1px solid #D9D9D9;
+    color: #D9D9D9;
+    -webkit-transform-origin: 0 100%;
+    transform-origin: 0 100%;
+    -webkit-transform: scaleY(0.5);
+    transform: scaleY(0.5);
+}
+/*栅格系统*/
+.col{
+    position: relative;
+}
+.col:after{
+    content: ".";
+    display: block;
+    height: 0;
+    font-size: 0;
+    clear: both;
+    visibility: visible;
+}
+.col>li{
+    float: left;
+    box-sizing: border-box;
+}
+.col>li>a{
+    position: relative;
+    display: block;
+    width: 100%;
+    text-align: center;
+}
+.col>li>a:active{
+    background: #ddd;
+}
+.col-1>li{
+    width: 100%;
+}
+.col-2>li{
+    width: 50%;
+}
+.col-3>li{
+    width: 33.3333%;
+}
+.col-4>li{
+    width: 25%;
+}
+.col-5>li{
+    width: 20%;
+}
+.col-6>li{
+    width: 16.6666%;
+}
+.col-7>li{
+    width: 14.285%;
+}
+.col-8>li{
+    width: 12.5%;
+}
+
+
+/*按钮*/
+.ui-btn{
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 0.8rem;
+    line-height: 0.8rem;
+    background: #8f8f8f;
+    color: #fff;
+    font-size: 15px;
+    text-align: center;
+    border-radius: 4px;
+}
+.ui-btn.on {
+    background-color: #ff9402;
+}
+/*超出省略号*/
+.line-1{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.line-2 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    white-space: normal
+}
+.line-3 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    white-space: normal
+}
+
+.fl {
+    float: left
+}
+
+.fr {
+    float: right
+}
+.clear:after{
+    content: ".";
+    display: block;
+    height: 0;
+    font-size: 0;
+    clear: both;
+    visibility: visible;
+}
+
+.hide {
+    display: none
+}
+/*底部margin*/
+.mt20 {
+    margin-bottom: .2rem!important;
+}
+/*右边margin*/
+.mr20{
+    margin-right: .2rem!important;
+}
+.pd20{
+    padding: 0.2rem;
+}
+.f12{
+    font-size: 12px;
+}
+.f13{
+    font-size: 13px;
+}
+.f14{
+    font-size: 14px;
+}
+.f15{
+    font-size: 15px;
+}
+.f16{
+     font-size: 16px;
+}
+.f17{
+    font-size: 17px;
+}
+.f18{
+    font-size: 18px;
+}
+.f19{
+    font-size: 19px;
+}
+.f20{
+    font-size: 20px;
+}
+.ui-back{
+    position: relative;
+    left:0;
+    top: 0;
+    width: 0.88rem;
+    height: 0.88rem;
+    border: 0;
+    -webkit-transform: none;
+    transform: none;
+}
+.ui-back:before {
+    content: "";
+    position: absolute;
+    top: .6rem;
+    left: 0;
+    display: inline-block;
+    width: .48rem;
+    height: .48rem;
+    border: solid #353d44;
+    border-width: 1px 0 0 1px;
+    -webkit-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+}
+.ui_input {
+    width: 100%;
+    border: 0;
+    outline: 0;
+    -webkit-appearance: none;
+    background-color: transparent;
+    font-size: 12px;
+    color: #333;
+    text-indent: 5px;
+}
+/*页面居中*/
+.ui-body-center{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    -o-transform:translate(-50%,-50%);
+    -ms-transform:translate(-50%,-50%);
+    -moz-transform:translate(-50%,-50%);
+    -webkit-transform:translate(-50%,-50%);
+    transform:translate(-50%,-50%);
+}
+
+.ui-mask{
+    display: none;
+    position: fixed;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0);
+    -webkit-transition: background .3s;
+    transition: background .3s;
+}
+.ui_mask_show {
+    display: block;
+    background: rgba(0, 0, 0, 0.6);
+}
+
+
+
+
+
+
+
+
+
+
+
+

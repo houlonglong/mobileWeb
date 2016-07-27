@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no,shrink-to-fit=no">
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>demo</title>
+    <script>
+        (function() {
+            var baseFontSize = 50;
+            var baseWidth = 320;
+            var clientWidth = document.documentElement.clientWidth || window.innerWidth;
+            var innerWidth = Math.max(Math.min(clientWidth, 480), 320);
+            var rem = 50;
+            if (innerWidth > 362 && innerWidth <= 375) {
+                rem = Math.floor(innerWidth / baseWidth * baseFontSize * 0.9);
+            }
+            if (innerWidth > 375) {
+                rem = Math.floor(innerWidth / baseWidth * baseFontSize * 0.84);
+            }
+            window.__baseREM = rem;
+            document.querySelector('html').style.fontSize = rem + 'px';
+        }());
+    </script>
+    <link rel="stylesheet" href="reset.css"/>
+    <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+    <div id="app" class="app">
+        <!-- header-->
+        <header>
+            <ul class="ui-flex-align">
+                <li class="ui-flex-1">1</li>
+                <li class="ui-flex-1">1</li>
+                <li class="ui-flex-1">1</li>
+                <li class="ui-flex-1">1</li>
+            </ul>
+        </header>
+        <!-- footer-->
+        <footer>
+            <ul class="ui-flex-align">
+                <li class="ui-flex-1">1</li>
+                <li class="ui-flex-1">1</li>
+                <li class="ui-flex-1">1</li>
+                <li class="ui-flex-1">1</li>
+            </ul>
+        </footer>
+        <!-- 主页面内容区域，滚动区域-->
+        <div id="container" class="container">
+            <p>1</p>
+            <p>1</p>
+            <p>1</p>
+            <p>1</p>
+            <p>1</p>
+            <p>1</p>
+            <p>1</p>
+            <p>1</p>
+        </div>
+    </div>
+    <script src="zepto.min.js"></script>
+    <script src="swiper.min.js"></script>
+    <script src="vue.min.js"></script>
+</body>
+</html>
