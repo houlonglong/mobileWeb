@@ -564,14 +564,14 @@ footer+div.container{
 header{
     position: absolute;
     width: 100%;
-    height: auto;
     left: 0;
     top: 0;
     z-index: 3;
-    max-height: 1rem;
+    height:0.88rem;
+    max-height:0.88rem;
 }
 header~div.container{
-    padding-top: 1rem;
+    padding-top: 0.88rem;
 }
 /*gap between btn*/
 .weui_btn + .weui_btn {
